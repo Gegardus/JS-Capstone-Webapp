@@ -6,9 +6,6 @@ const modal = (movie) => `<div class="popup-container">
                             <img class="img" src="${movie.image.medium}" height="450" width="370"/>
                         </div>
                         <div class="summary">
-                        <p> ${movie.summary} </p>
-                        </div>
-                        <div>
                             <ul class="info">
                                 <li><h1> ${movie.name} </h1></li>
                                 <li> Language: ${movie.language}</li>
@@ -17,7 +14,8 @@ const modal = (movie) => `<div class="popup-container">
                                 <li> Rating: ${movie.rating.average}</li>
                                 <li> Network: ${movie.network.name}</li>
                             </ul>
-                        </div>                       
+                            <p> ${movie.summary} </p>
+                        </div>                      
                     </div>
                   
                     <div>

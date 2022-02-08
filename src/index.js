@@ -11,15 +11,6 @@ const displayMovie = (movie) => `<div class="card">
                     </div>
                     </div>`;
 
-const listMovie = document.querySelector('.movies');
-const moviesComponent = async () => {
-  listMovie.innerHTML = '';
-  const list = await getMovies();
-  list.forEach((item) => {
-    listMovie.innerHTML += displayMovie(item);
-  });
-};
-
 const modalHolder = document.querySelector('.modal');
 const displayModal = async (movieId) => {
   const movie = await getMovieById(movieId);
@@ -33,13 +24,21 @@ const displayModal = async (movieId) => {
     popContainer.style.visibility = 'hidden';
   });
 }
+const listMovie = document.querySelector('.movies');
+const moviesComponent = async () => {
+  listMovie.innerHTML = '';
+  const list = await getMovies();
+  list.forEach((item) => {
+    listMovie.innerHTML += displayMovie(item);
+  });
 
-const btn = document.querySelectorAll('.btn');
+  const btn = document.querySelectorAll('.btn');
   btn.forEach((item) => {
     item.addEventListener('click', async () => {
       const movieId = item.getAttribute('data-id');
       displayModal(movieId);
     });
   });
+};
 
 moviesComponent();
