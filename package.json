@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "private": true,
-  "scripts": {    
+  "scripts": {
     "watch": "webpack --watch",
     "start": "webpack serve --open",
     "build": "webpack"
