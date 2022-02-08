@@ -1,5 +1,5 @@
 import './style.css';
-import getMovies from './module/get-api';
+import { getMovies, getMovieById } from './module/get-api';
 import modal from './module/modal';
 
 const displayMovie = (movie) => `<div class="card">
@@ -7,7 +7,7 @@ const displayMovie = (movie) => `<div class="card">
                     <div>
                     <h3>${movie.name}</h3>
                     <p class="likes"> <i class="fas fa-heart"></i> <span> N </span> likes </p>
-                    <button class="btn">comments</button>
+                    <button class="btn" data-id="${movie.id}">comments</button>
                     </div>
                     </div>`;
 
@@ -20,5 +20,26 @@ const moviesComponent = async () => {
   });
 };
 
-moviesComponent();
+const modalHolder = document.querySelector('.modal');
+const displayModal = async (movieId) => {
+  const movie = await getMovieById(movieId);
+  modalHolder.innerHTML = modal(movie);
+  const popContainer = document.querySelector('.popup-container');
+  popContainer.style.display = 'block';
+  popContainer.style.visibility = 'visible';
+  const close = document.querySelector('.close');
+  close.addEventListener('click', () => {
+    popContainer.style.display = 'none';
+    popContainer.style.visibility = 'hidden';
+  });
+}
 
+const btn = document.querySelectorAll('.btn');
+  btn.forEach((item) => {
+    item.addEventListener('click', async () => {
+      const movieId = item.getAttribute('data-id');
+      displayModal(movieId);
+    });
+  });
+
+moviesComponent();
