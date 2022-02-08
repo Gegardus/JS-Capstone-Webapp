@@ -1,6 +1,8 @@
-const getMovies = async () => {
+export const getMovies = async () => {
     const response = await fetch(`https://api.tvmaze.com/shows`);
     return response.json();
   };
-
-  export default getMovies;
+export const getMovieById = async (id) => {
+  const response = await fetch(`https://api.tvmaze.com/shows/${id}`);
+  return response.json();
+};

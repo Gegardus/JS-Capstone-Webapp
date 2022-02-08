@@ -3,6 +3,12 @@
   src: url("GemunuLibre-VariableFont_wght.ttf") format("woff2");
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: "MyWebFont", Fallback, sans-serif;
   margin: 0;
@@ -99,4 +105,88 @@ footer {
 footer p a {
   text-decoration: none;
   color: yellow;
+}
+
+/* popup window */
+
+.popup-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  left: 0;
+  top: 0; 
+  overflow: auto;
+  background-color: brown; 
+  opacity: 99%;
+}
+
+.popup { 
+  background-color: bisque;
+  padding: 2rem;
+  width: 80%;
+  height: auto;
+  margin: 5% 10%;  
+}
+
+.details {
+  display: flex;
+  height: 60%;
+}
+
+.summary {
+  text-align: justify;
+  padding: 0 10px;
+  font-size: 1.1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.info {
+  list-style: none;
+  display: flex;
+  flex-direction: column; 
+  justify-content: start;
+}
+
+.info li {  
+  width: 400px;
+  padding: 5px 5px;
+  font-size: 1.2em;
+  font-weight: normal;
+}
+
+.summary p {
+  margin-top: 1rem;
+}
+
+.popup img {
+  object-fit: contain;
+}
+
+input {
+  padding: 14px;
+  border: none;
+  border-radius: 5px;
+  width: 30%;
+  margin: 8px;
+  outline: none;
+}
+
+.comments {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  background-color:antiquewhite;
+}
+
+.close {
+  float: right;
+}
+
+.details .btn {
+ margin-right: 50px;
+ width: 150px;
+ height: 50px;
 }
