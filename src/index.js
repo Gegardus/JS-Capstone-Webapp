@@ -1,15 +1,18 @@
 import './style.css';
 import { getMovies, getMovieById } from './module/get-api';
 import modal from './module/modal';
+import { getLikes } from './module/interact';
 
-const displayMovie = (movie) => `<div class="card">
-                    <div><img class="card-img" src="${movie.image.medium}"></div>
+const displayMovie = (movie, like = null) => `<div class="card">
                     <div>
-                    <h3>${movie.name}</h3>
-                    <p class="likes"> <i class="fas fa-heart"></i> <span> N </span> likes </p>
-                    <button class="btn" data-id="${movie.id}">comments</button>
+                        <img class="card-img" src="${movie.image.medium}">
                     </div>
-                    </div>`;
+                    <div>
+                        <h3> ${movie.name} </h3>
+                        <p class="likes"> <i class="fas fa-heart like" data-id="${movie.id}"> <span class="num"> ${like} </span> </i>  likes </p>
+                        <button class="btn" data-id="${movie.id}"> comments </button>
+                    </div>
+   </div>`;
 
 const modalHolder = document.querySelector('.modal');
 const displayModal = async (movieId) => {
@@ -24,12 +27,21 @@ const displayModal = async (movieId) => {
     popContainer.style.visibility = 'hidden';
   });
 }
+
 const listMovie = document.querySelector('.movies');
 const moviesComponent = async () => {
+  const likes = await getLikes();
   listMovie.innerHTML = '';
-  const list = await getMovies();
+  const list = await getMovies(); 
   list.forEach((item) => {
-    listMovie.innerHTML += displayMovie(item);
+    let count = 0;
+    const tin = likes.find((like) => item.id === Number(like.item_id));
+    if (tin !== undefined) {
+      count = tin.likes;
+    } else {
+      count = 0;
+    }
+    listMovie.innerHTML += displayMovie(item, count);
   });
 
   const btn = document.querySelectorAll('.btn');
@@ -40,5 +52,15 @@ const moviesComponent = async () => {
     });
   });
 };
+
+fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/', {   
+   method: 'POST',    
+   body: JSON.stringify({ 
+     name: "Vahan" }),   
+   headers: {      
+  'Content-type': 'application/json; charset= UTF-8',    
+}
+}).then(respons => respons.json())
+.then(data => console.log(data))
 
 moviesComponent();
