@@ -1,0 +1,12 @@
+@font-face {
+  font-family: "MyWebFont";
+  src: url("GemunuLibre-VariableFont_wght.ttf") format("woff2");
+}
+
+body {
+  font-family: "MyWebFont", Fallback, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: blanchedalmond;
+}
