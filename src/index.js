@@ -1,5 +1,6 @@
 import './style.css';
 import getMovies from './module/get-api';
+import modal from './module/modal';
 
 const displayMovie = (movie) => `<div class="card">
                     <div><img class="card-img" src="${movie.image.medium}"></div>
