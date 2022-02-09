@@ -1,6 +1,6 @@
 import './style.css';
 import { getMovies, getMovieById } from './module/get-api';
-import { modal, getComments } from './module/modal';
+import { modal, getComments, addComment } from './module/modal';
 import { getLikes, addLike } from './module/interact';
 
 const displayMovie = (movie, like = null) => `<div class="card">
@@ -26,9 +26,31 @@ const displayModal = async (movieId) => {
     popContainer.style.display = 'none';
     popContainer.style.visibility = 'hidden';
   });
+  const currentDate = () => {
+    const date = new Date();
+    return date.toISOString().split('T')[0];
+  };
+  
+
   getComments(movieId);
-  document.querySelector('.comments').innerHTML += `<li><span>${currentDate()}</span> | <span>${comme.username}:</span> ${comme.comment}</li>`;
-}
+  const commentForm = document.getElementById('comment-form');
+  commentForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const [name, comment] = commentForm;
+      const comme = {
+        item_id: movieId,
+        username: name.value,
+        comment: comment.value,
+      };
+      addComment(comme);
+      if (document.querySelector('.comments').innerHTML === '<p>No comments found</p>') {
+        document.querySelector('.comments').innerHTML = '';
+      }
+    document.querySelector('.comments').innerHTML += 
+    `<li><span>${currentDate()}</span> | <span>${comme.username}:</span> ${comme.comment}</li>`;
+    commentForm.reset();
+  });
+};
 
 const listMovie = document.querySelector('.movies');
 const moviesComponent = async () => {

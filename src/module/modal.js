@@ -1,4 +1,7 @@
-import { appId, baseURL } from './interact'
+import {
+  appId,
+  baseURL
+} from './interact'
 
 export const modal = (movie) => `<div class="popup-container">
                 <div class="popup">
@@ -36,21 +39,31 @@ export const modal = (movie) => `<div class="popup-container">
             </div>`;
 
 const displayComments = (comments) => {
-    const list = document.querySelector('.comments');
-    if (!comments.length) {
-        list.innerHTML = '<p>No comments found</p>';
-    } else {
-        comments.forEach((item) => {
-            list.innerHTML += `<li><span>${item.creation_date}</span> | <span>${item.username}:</span> ${item.comment}</li>`;
-        });
-    }
+  const list = document.querySelector('.comments');
+  if (!comments.length) {
+    list.innerHTML = '<p>No comments found</p>';
+  } else {
+    comments.forEach((item) => {
+      list.innerHTML += `<li><span>${item.creation_date}</span> | <span>${item.username}:</span> ${item.comment}</li>`;
+    });
+  }
 };
 export const getComments = async (movieID) => {
-    const response = await fetch(`${baseURL}apps/${appId}/comments?item_id=${movieID}`, {
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    });
-    const comments = await response.json();
-    displayComments(comments);
+  const response = await fetch(`${baseURL}apps/${appId}/comments?item_id=${movieID}`, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  const comments = await response.json();
+  displayComments(comments);
+};
+
+export const addComment = async (comment) => {
+  fetch(`${baseURL}apps/${appId}/comments`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(comment),
+  });
 };
