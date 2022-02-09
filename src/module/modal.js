@@ -48,6 +48,24 @@ const displayComments = (comments) => {
     });
   }
 };
+
+const countComments = (comments) => {
+  if (comments.length) {
+    document.getElementById('count').innerHTML = `Comments ( <span class="fig">${comments.length}</span> )`;
+  }
+};
+
+
+export const updateCount = () => {
+  if (document.getElementById('count').innerHTML === ' Comments  ') {
+    document.getElementById('count').innerHTML = 'Comments ( <span class="fig">1</span> )';
+  } else {
+    let test = Number(document.querySelector('.fig').innerHTML);
+    test += 1;
+    document.querySelector('.fig').innerHTML = `${test}`;
+  }
+};
+
 export const getComments = async (movieID) => {
   const response = await fetch(`${baseURL}apps/${appId}/comments?item_id=${movieID}`, {
     headers: {
@@ -56,6 +74,7 @@ export const getComments = async (movieID) => {
   });
   const comments = await response.json();
   displayComments(comments);
+  countComments(comments);
 };
 
 export const addComment = async (comment) => {
