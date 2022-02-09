@@ -1,5 +1,5 @@
 import './style.css';
-import { getMovies, getMovieById } from './module/get-api';
+import { getMovies, getMovieById, countMovies } from './module/get-api';
 import { modal, getComments, addComment } from './module/modal';
 import { getLikes, addLike } from './module/interact';
 
@@ -57,6 +57,7 @@ const moviesComponent = async () => {
   const likes = await getLikes();
   listMovie.innerHTML = '';
   const list = await getMovies(); 
+  countMovies(list);
   list.forEach((item) => {
     let count = 0;
     const num = likes.find((like) => item.id === Number(like.item_id));
