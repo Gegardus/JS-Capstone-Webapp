@@ -1,7 +1,7 @@
 import './style.css';
 import { getMovies, getMovieById } from './module/get-api';
 import { modal, getComments } from './module/modal';
-import { getLikes } from './module/interact';
+import { getLikes, addLike } from './module/interact';
 
 const displayMovie = (movie, like = null) => `<div class="card">
                     <div>
@@ -37,13 +37,25 @@ const moviesComponent = async () => {
   const list = await getMovies(); 
   list.forEach((item) => {
     let count = 0;
-    const tin = likes.find((like) => item.id === Number(like.item_id));
-    if (tin !== undefined) {
-      count = tin.likes;
+    const num = likes.find((like) => item.id === Number(like.item_id));
+    if (num !== undefined) {
+      count = num.likes;
     } else {
       count = 0;
     }
     listMovie.innerHTML += displayMovie(item, count);
+  });
+
+  const like = document.querySelectorAll('.like');
+  like.forEach((item) => {
+    item.addEventListener('click', () => {
+      const movieId = item.getAttribute('data-id');
+      if (item.style.color !== 'skyblue') {
+        item.style.color = 'skyblue';
+        item.firstElementChild.innerHTML = Number(item.firstElementChild.innerHTML) + 1;
+        addLike(movieId);
+      }
+    });
   });
 
   const btn = document.querySelectorAll('.btn');
