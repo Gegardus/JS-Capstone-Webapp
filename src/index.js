@@ -26,6 +26,7 @@ const displayModal = async (movieId) => {
     popContainer.style.display = 'none';
     popContainer.style.visibility = 'hidden';
   });
+  
   const currentDate = () => {
     const date = new Date();
     return date.toISOString().split('T')[0];
