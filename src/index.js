@@ -1,6 +1,6 @@
 import './style.css';
 import { getMovies, getMovieById } from './module/get-api';
-import modal from './module/modal';
+import { modal, getComments } from './module/modal';
 import { getLikes } from './module/interact';
 
 const displayMovie = (movie, like = null) => `<div class="card">
@@ -26,6 +26,8 @@ const displayModal = async (movieId) => {
     popContainer.style.display = 'none';
     popContainer.style.visibility = 'hidden';
   });
+  getComments(movieId);
+  document.querySelector('.comments').innerHTML += `<li><span>${currentDate()}</span> | <span>${comme.username}:</span> ${comme.comment}</li>`;
 }
 
 const listMovie = document.querySelector('.movies');
@@ -52,15 +54,5 @@ const moviesComponent = async () => {
     });
   });
 };
-
-fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/', {   
-   method: 'POST',    
-   body: JSON.stringify({ 
-     name: "Vahan" }),   
-   headers: {      
-  'Content-type': 'application/json; charset= UTF-8',    
-}
-}).then(respons => respons.json())
-.then(data => console.log(data))
 
 moviesComponent();
