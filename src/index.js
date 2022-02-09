@@ -37,9 +37,9 @@ const moviesComponent = async () => {
   const list = await getMovies(); 
   list.forEach((item) => {
     let count = 0;
-    const tin = likes.find((like) => item.id === Number(like.item_id));
-    if (tin !== undefined) {
-      count = tin.likes;
+    const num = likes.find((like) => item.id === Number(like.item_id));
+    if (num !== undefined) {
+      count = num.likes;
     } else {
       count = 0;
     }
