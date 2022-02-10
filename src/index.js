@@ -76,8 +76,7 @@ const moviesComponent = async () => {
   like.forEach((item) => {
     item.addEventListener('click', () => {
       const movieId = item.getAttribute('data-id');
-      if (item.style.color !== 'skyblue') {
-        item.style.color = 'skyblue';
+      if (item.style.color !== 'skyblue') {       
         item.firstElementChild.innerHTML = Number(item.firstElementChild.innerHTML) + 1;
         addLike(movieId);
       }

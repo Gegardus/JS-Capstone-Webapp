@@ -117,6 +117,10 @@ h3 {
   background-color: darkred;
 }
 
+.like:hover {
+  color: skyblue;
+}
+
 .likes {
   padding: 5px 5px;
   font-size: 1.1em;
