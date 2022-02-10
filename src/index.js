@@ -6,12 +6,10 @@ import {
 import { getLikes, addLike } from './module/interact';
 
 const displayMovie = (movie, like = null) => `<div class="card">
-                    <div>
-                        <img class="card-img" src="${movie.image.medium}">
-                    </div>
-                    <div>
+                    <img class="card-img" src="${movie.image.medium}">
+                    <div class="movie-footer">
                         <h3> ${movie.name} </h3>
-                        <p class="likes"> <i class="fas fa-heart like" data-id="${movie.id}"> <span class="num"> ${like} </span> </i>  likes </p>
+                        <p class="likes"> <i class="fas fa-heart like" data-id="${movie.id}"> <span class="num"> ${like} </span> </i></p>
                         <button class="btn" data-id="${movie.id}"> comments </button>
                     </div>
    </div>`;
@@ -76,8 +74,8 @@ const moviesComponent = async () => {
   like.forEach((item) => {
     item.addEventListener('click', () => {
       const movieId = item.getAttribute('data-id');
-      if (item.style.color !== 'skyblue') {
-        item.style.color = 'skyblue';
+      if (item.style.color !== 'rgb(156, 0, 0)') {
+        item.style.color = 'rgb(156, 0, 0)';
         item.firstElementChild.innerHTML = Number(item.firstElementChild.innerHTML) + 1;
         addLike(movieId);
       }

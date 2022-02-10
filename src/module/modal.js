@@ -5,16 +5,13 @@ import {
 
 export const modal = (movie) => `<div class="popup-container">
                 <div class="popup">
-                    <button class="btn close">&times;</button>
+                    <button class="btn close">Close</button>
                     <div class="details">
-                        <div>
-                            <img class="img" src="${movie.image.medium}" height="450" width="370"/>
-                        </div>
+                        <img class="img" src="${movie.image.medium}" height="450" width="370"/>
                         <div class="summary">
                             <ul class="info">
                                 <li><h1> ${movie.name} </h1></li>
                                 <li> Language: ${movie.language}</li>
-                                <li> Type: ${movie.type}</li>
                                 <li> Premiered: ${movie.premiered}</li>
                                 <li> Rating: ${movie.rating.average}</li>
                                 <li> Network: ${movie.network.name}</li>

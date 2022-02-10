@@ -1,7 +1,7 @@
 {
   "name": "js-capstone-webapp",
   "version": "1.0.0",
-  "description": "",
+  "description": "![](https://img.shields.io/badge/Microverse-blueviolet)",
   "private": true,
   "scripts": {
     "test": "jest",
@@ -41,5 +41,6 @@
   },
   "dependencies": {
     "lodash": "^4.17.21"
-  }
+  },
+  "main": "get-api.test.js"
 }
