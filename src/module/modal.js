@@ -1,7 +1,7 @@
 import {
   appId,
-  baseURL
-} from './interact'
+  baseURL,
+} from './interact';
 
 export const modal = (movie) => `<div class="popup-container">
                 <div class="popup">
@@ -49,12 +49,11 @@ const displayComments = (comments) => {
   }
 };
 
-const countComments = (comments) => {
+export const countComments = (comments) => {
   if (comments.length) {
     document.getElementById('count').innerHTML = `Comments ( <span class="fig">${comments.length}</span> )`;
   }
 };
-
 
 export const updateCount = () => {
   if (document.getElementById('count').innerHTML === ' Comments  ') {
