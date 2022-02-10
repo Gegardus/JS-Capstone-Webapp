@@ -1,7 +1,7 @@
 import {
   appId,
-  baseURL
-} from './interact'
+  baseURL,
+} from './interact';
 
 export const modal = (movie) => `<div class="popup-container">
                 <div class="popup">

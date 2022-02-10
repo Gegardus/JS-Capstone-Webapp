@@ -1,5 +1,5 @@
 export const baseURL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/';
-export const appId = "byg3KtvqOhmd3Xt9Axu5";
+export const appId = 'byg3KtvqOhmd3Xt9Axu5';
 
 export const addLike = async (itemId) => {
   fetch(`${baseURL}apps/${appId}/likes`, {
@@ -20,6 +20,3 @@ export const getLikes = async () => {
     });
   return response.json();
 };
-
-
-
