@@ -19,7 +19,7 @@ JavaScript capstone project - API-based webapp
 
 ## Live Demo
 
-[Live Demo Link]()
+[Live Demo Link](https://kandy-peter.github.io/JS-Capstone-Webapp/)
 
 ## Video Link
 
@@ -34,7 +34,7 @@ To get a local copy up and running follow these simple example steps:
 clone repo: `https://github.com/Gegardus/JS-Capstone-Webapp`
 
 then
-`cd Awesome-Books`
+`cd JS-Capstone-Webapp`
 
 ### Install
 
