@@ -4,7 +4,7 @@
 
 JavaScript capstone project - API-based webapp
 
-> The JavaScript capstone project is about building a web application based on the external TVmaze API (data about TV series and movies) with two user interfaces.
+> The JavaScript capstone project is about building a web application based on the external TVmaze API with two user interfaces.
 
 ![screenshot](./src/images/app_screenshot1.png)
 ![screenshot](./src/images/app_screenshot2.png)
