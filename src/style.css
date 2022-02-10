@@ -70,7 +70,6 @@ h1 {
   margin: 1% 5%;
 }
 
-
 .card {
   margin: 15px 10px;
 }
@@ -80,23 +79,27 @@ h1 {
   overflow: hidden;
 }
 
+h3 {
+  padding: 5px 5px;
+}
+
 .btn {
-  padding: 5px 15px;
+  padding: 10px 15px;
   background-color: slateblue;
   border: none;
   border-radius: 4px;
   color: #fff;
-  font-size: 16px;
+  font-size: 1em;
   transition-duration: 1s;
   cursor: pointer;
 }
 
 .btn:hover {
-  background-color: darkred;
- 
+  background-color: darkred; 
 }
 
 .likes {
+  padding: 5px 5px;
   font-size: 1.1em;
   color: deeppink;
 }
@@ -110,7 +113,6 @@ footer {
   text-align: center;
   padding: 1rem;
   margin-top: 2rem;
-
 }
 
 footer p a {
